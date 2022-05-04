@@ -68,7 +68,12 @@ function doNotKnowButton() {}
     <div
       class="text-center bg-secondary fs-2 h-100 my-auto d-flex flex-column justify-content-between"
     >
-      <div class="text-center fs-2 bg-dark py-2">{{ word.en }}</div>
+      <div class="text-center fs-2 bg-dark py-2 position-relative">
+        <router-link :to="{ name: 'home' }" style="color: white">
+          <i class="bi bi-chevron-left" id="arrow"></i>
+        </router-link>
+        {{ word.en }}
+      </div>
       <div
         class="h-100"
         id="translate"
@@ -124,5 +129,10 @@ function doNotKnowButton() {}
   display: flex;
   justify-content: center;
   align-items: center;
+}
+#arrow {
+  position: absolute;
+  top: 10px;
+  left: 15px;
 }
 </style>
