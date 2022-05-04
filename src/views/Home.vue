@@ -7,7 +7,7 @@
         ><div class="me-5">Home</div></router-link
       >
       <router-link :to="{ name: 'homeData' }"
-        ><div class="me-5">Data</div></router-link
+        ><div class="me-1">Data</div></router-link
       >
     </div>
     <router-view></router-view>
