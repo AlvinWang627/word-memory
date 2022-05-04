@@ -1,14 +1,16 @@
 <script setup></script>
 <template>
   <div class="container-md text-white vh-100 bg-dark">
-    <div class="title text-center">memory word</div>
-    <div class="text-center">
-      <div>Home</div>
-      <div>Data</div>
+    <div class="title text-center pt-5 fs-1">Memory word</div>
+    <div class="text-center d-flex justify-content-center mt-5 fs-3">
+      <router-link :to="{ name: 'homeStartBtn' }"
+        ><div class="me-5">Home</div></router-link
+      >
+      <router-link :to="{ name: 'homeData' }"
+        ><div class="me-5">Data</div></router-link
+      >
     </div>
-    <router-link :to="{ name: 'test-word' }" class="text-center"
-      >Start memory</router-link
-    >
+    <router-view></router-view>
   </div>
 </template>
 

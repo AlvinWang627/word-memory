@@ -69,7 +69,7 @@ function doNotKnowButton() {}
       class="text-center bg-secondary fs-2 h-100 my-auto d-flex flex-column justify-content-between"
     >
       <div class="text-center fs-2 bg-dark py-2 position-relative">
-        <router-link :to="{ name: 'home' }" style="color: white">
+        <router-link :to="{ name: 'homeStartBtn' }" style="color: white">
           <i class="bi bi-chevron-left" id="arrow"></i>
         </router-link>
         {{ word.en }}
