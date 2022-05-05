@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
-
+import { useRouter } from 'vue-router';
+const router = useRouter();
 const dummyData = [
   {
     id: 0,
@@ -34,34 +35,40 @@ const dummyData = [
   },
 ];
 const id = ref(0);
-//用v-for做出一堆單字卡，每頁顯示一個單字，按下按鈕後換頁
-//做一個filter function 用來節約效能 想先別用v-show了
 const ansButton = ref(true);
 const words = ref([]);
-
+const doNotKnow = ref([]);
 function importWord() {
-  words.value.splice(0, 0, ...dummyData);
+  doNotKnow.value.splice(0, 0, ...dummyData);
 }
 importWord();
-//點按鈕之後id++、將ansButton改成false、如果id到達words的長度則跳回首頁
 
-//got it
 const gotIt = ref([]);
-function gotItButton() {
-  gotIt.value.push();
-}
-//unfamiliar
 const unfamiliar = ref([]);
-function unfamiliarButton() {}
-//do not know
-const doNotKnow = ref([]);
-function doNotKnowButton() {}
+let length = doNotKnow.value.length;
+function gotItButton(word, event) {
+  const value = event.target.innerText;
+  if (value === '我會了') {
+    gotIt.value.push({ id: word.id, en: word.en, ch: word.ch });
+    doNotKnow.value.splice(id, 1);
+  } else if (value === '不熟') {
+    unfamiliar.value.push({ id: word.id, en: word.en, ch: word.ch });
+    doNotKnow.value.splice(id, 1);
+  }
+  length--;
+  id.value++;
+  if (length === 0) {
+    alert('words are tested');
+    router.push({ name: 'homeStartBtn' });
+  }
+  ansButton.value = !ansButton.value;
+}
 </script>
 
 <template>
   <div
     class="container-md text-white vh-100"
-    v-for="word in words"
+    v-for="word in doNotKnow"
     :key="word.id"
     v-show="word.id === id"
   >
@@ -87,30 +94,21 @@ function doNotKnowButton() {}
         <button
           type="button"
           class="btn btn-primary rounded-pill w-25"
-          @click="
-            ansButton = !ansButton;
-            id++;
-          "
+          @click.stop.prevent="gotItButton(word, $event)"
         >
           我會了
         </button>
         <button
           type="button"
           class="btn btn-danger rounded-pill w-25"
-          @click="
-            ansButton = !ansButton;
-            id++;
-          "
+          @click.stop.prevent="gotItButton(word, $event)"
         >
           不熟
         </button>
         <button
           type="button"
           class="btn btn-success rounded-pill w-25"
-          @click="
-            ansButton = !ansButton;
-            id++;
-          "
+          @click.stop.prevent="gotItButton(word, $event)"
         >
           我不會
         </button>
