@@ -1,4 +1,9 @@
-<script setup></script>
+<script setup>
+import { ref } from 'vue';
+
+const test = ref('test');
+</script>
+
 <template>
   <div class="container-md text-white vh-100 bg-dark">
     <div class="title text-center pt-5 fs-1">Memory word</div>

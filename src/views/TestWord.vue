@@ -1,62 +1,37 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+const props = defineProps({
+  dummyData: {
+    type: Array,
+    required: true,
+  },
+});
+const emit = defineEmits(['emitGotIt', 'emitUnfamiliar', 'emitDoNotKnow']);
+
 const router = useRouter();
-const dummyData = [
-  {
-    id: 0,
-    en: 'apple',
-    ch: '蘋果',
-  },
-  {
-    id: 1,
-    en: 'book',
-    ch: '書',
-  },
-  {
-    id: 2,
-    en: 'cat',
-    ch: '貓',
-  },
-  {
-    id: 3,
-    en: 'dog',
-    ch: '狗',
-  },
-  {
-    id: 4,
-    en: 'examine',
-    ch: '檢查、審查',
-  },
-  {
-    id: 5,
-    en: 'cooperate',
-    ch: '協力、合作',
-  },
-];
-const id = ref(0);
 const ansButton = ref(true);
-const words = ref([]);
-const doNotKnow = ref([]);
+const unTestWords = ref([]);
 function importWord() {
-  doNotKnow.value.splice(0, 0, ...dummyData);
+  unTestWords.value.splice(0, 0, ...props.dummyData);
 }
 importWord();
-
-const gotIt = ref([]);
-const unfamiliar = ref([]);
-let length = doNotKnow.value.length;
+let length = unTestWords.value.length;
 function gotItButton(word, event) {
-  const value = event.target.innerText;
-  if (value === '我會了') {
-    gotIt.value.push({ id: word.id, en: word.en, ch: word.ch });
-    doNotKnow.value.splice(id, 1);
-  } else if (value === '不熟') {
-    unfamiliar.value.push({ id: word.id, en: word.en, ch: word.ch });
-    doNotKnow.value.splice(id, 1);
+  const target = event.target.innerText;
+  if (target === '我會了') {
+    // gotIt.value.push({ id: word.id, en: word.en, ch: word.ch });
+    unTestWords.value.splice(0, 1);
+    emit('emitGotIt', word);
+  } else if (target === '不熟') {
+    // unfamiliar.value.push({ id: word.id, en: word.en, ch: word.ch });
+    unTestWords.value.splice(0, 1);
+    emit('emitUnfamiliar', word);
+  } else if (target === '我不會') {
+    unTestWords.value.splice(0, 1);
+    emit('emitDoNotKnow', word);
   }
   length--;
-  id.value++;
   if (length === 0) {
     alert('words are tested');
     router.push({ name: 'homeStartBtn' });
@@ -68,9 +43,9 @@ function gotItButton(word, event) {
 <template>
   <div
     class="container-md text-white vh-100"
-    v-for="word in doNotKnow"
+    v-for="(word, index) in unTestWords"
     :key="word.id"
-    v-show="word.id === id"
+    v-show="index === 0"
   >
     <div
       class="text-center bg-secondary fs-2 h-100 my-auto d-flex flex-column justify-content-between"
