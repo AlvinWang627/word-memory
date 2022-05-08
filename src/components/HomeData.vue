@@ -17,7 +17,6 @@ function setVisibility(tag) {
 const filteredWords = computed(() => {
   return filters[visibility.value].value;
 });
-
 </script>
 <template>
   <div class="d-flex justify-content-around m-5">
@@ -70,7 +69,10 @@ const filteredWords = computed(() => {
       >
     </div>
   </div>
-  <table class="table table-dark table-striped table-hover">
+  <table
+    v-if="filteredWords.length !== 0"
+    class="table table-dark table-striped table-hover"
+  >
     <thead>
       <tr>
         <th scope="col">EN</th>
@@ -84,4 +86,5 @@ const filteredWords = computed(() => {
       </tr>
     </tbody>
   </table>
+  <div v-else>尚未有資料</div>
 </template>
