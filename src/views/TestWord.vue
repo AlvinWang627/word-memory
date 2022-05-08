@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+const router = useRouter();
 const props = defineProps({
   dummyData: {
     type: Array,
@@ -8,8 +9,6 @@ const props = defineProps({
   },
 });
 const emit = defineEmits(['emitGotIt', 'emitUnfamiliar', 'emitDoNotKnow']);
-
-const router = useRouter();
 const ansButton = ref(true);
 const unTestWords = ref([]);
 function importWord() {

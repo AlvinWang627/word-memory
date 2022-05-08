@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, provide } from 'vue';
 import { RouterView } from 'vue-router';
 const dummyData = ref([
   {
@@ -55,10 +55,13 @@ function pushInDoNotKnow(data) {
   //將記住的單字放到gotIt中
   doNotKnow.value.push(data);
 }
+
+provide('gotItWords', gotIt);
+provide('unfamiliarWords', unfamiliar);
+provide('doNotKnowWords', doNotKnow);
 </script>
 
 <template>
-  {{ gotIt }}
   <RouterView
     @emitGotIt="pushInGotItWord"
     @emitUnfamiliar="pushInUnfamiliar"

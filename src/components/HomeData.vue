@@ -1,50 +1,26 @@
 <script setup>
-import { ref } from 'vue';
-const dummyData = [
-  {
-    id: 0,
-    en: 'apple',
-    ch: '蘋果',
-  },
-  {
-    id: 1,
-    en: 'book',
-    ch: '書',
-  },
-  {
-    id: 2,
-    en: 'cat',
-    ch: '貓',
-  },
-  {
-    id: 3,
-    en: 'dog',
-    ch: '狗',
-  },
-  {
-    id: 4,
-    en: 'examine',
-    ch: '檢查、審查',
-  },
-  {
-    id: 5,
-    en: 'cooperate',
-    ch: '協力、合作',
-  },
-];
-const visibility = ref('');
-const gotItWords = ref([]);
-const unfamiliar = ref(['banana']);
-const doNotKnow = ref(['cat']);
-function importGotIt() {
-  gotItWords.value.push(...dummyData);
+import { ref, inject, computed } from 'vue';
+const gotItWords = inject('gotItWords');
+const unfamiliarWords = inject('unfamiliarWords');
+const doNotKnowWords = inject('doNotKnowWords');
+
+const filters = {
+  gotIt: gotItWords,
+  unfamiliar: unfamiliarWords,
+  doNotKnow: doNotKnowWords,
+};
+
+const visibility = ref('gotIt');
+function setVisibility(tag) {
+  visibility.value = tag;
 }
-importGotIt();
+const filteredWords = computed(() => {
+  return filters[visibility.value].value;
+});
+
 </script>
-<!-- 設計成todoList的filter的標籤格式 -->
 <template>
   <div class="d-flex justify-content-around m-5">
-    <!-- <router-link tag="button">abc</router-link>> -->
     <div
       class="btn-group"
       role="group"
@@ -58,7 +34,12 @@ importGotIt();
         autocomplete="off"
         checked
       />
-      <label class="btn btn-outline-primary" for="btnradio1">got it</label>
+      <label
+        class="btn btn-outline-primary"
+        for="btnradio1"
+        @click="setVisibility('gotIt')"
+        >got it</label
+      >
 
       <input
         type="radio"
@@ -67,7 +48,10 @@ importGotIt();
         id="btnradio2"
         autocomplete="off"
       />
-      <label class="btn btn-outline-primary mx-5" for="btnradio2"
+      <label
+        class="btn btn-outline-primary mx-5"
+        for="btnradio2"
+        @click="setVisibility('unfamiliar')"
         >unfamiliar</label
       >
 
@@ -78,19 +62,22 @@ importGotIt();
         id="btnradio3"
         autocomplete="off"
       />
-      <label class="btn btn-outline-primary" for="btnradio3">do not know</label>
+      <label
+        class="btn btn-outline-primary"
+        for="btnradio3"
+        @click="setVisibility('doNotKnow')"
+        >do not know</label
+      >
     </div>
   </div>
-  <table
-    class="table table-dark table-striped table-hover"
-  >
+  <table class="table table-dark table-striped table-hover">
     <thead>
       <tr>
         <th scope="col">EN</th>
         <th scope="col">CH</th>
       </tr>
     </thead>
-    <tbody v-for="word in gotItWords">
+    <tbody v-for="word in filteredWords">
       <tr class="fs-2">
         <td>{{ word.en }}</td>
         <td>{{ word.ch }}</td>
