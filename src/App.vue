@@ -1,41 +1,45 @@
 <script setup>
 import { ref, provide, watchEffect } from 'vue';
 import { RouterView } from 'vue-router';
-const dummyData = ref([
-  {
-    id: 0,
-    en: 'apple',
-    ch: '蘋果',
-  },
-  {
-    id: 1,
-    en: 'book',
-    ch: '書',
-  },
-  {
-    id: 2,
-    en: 'cat',
-    ch: '貓',
-  },
-  {
-    id: 3,
-    en: 'dog',
-    ch: '狗',
-  },
-  {
-    id: 4,
-    en: 'examine',
-    ch: '檢查、審查',
-  },
-  {
-    id: 5,
-    en: 'cooperate',
-    ch: '協力、合作',
-  },
-]);
+const STORAGE_KEY_dummyData = 'memory-dummyData';
 const STORAGE_KEY_gotIt = 'memory-word-gotIt';
 const STORAGE_KEY_unfamiliar = 'memory-word-unfamiliar';
 const STORAGE_KEY_doNotKnow = 'memory-word-doNotKnow';
+
+const dummyData = ref(
+  JSON.parse(localStorage.getItem(STORAGE_KEY_dummyData)) || [
+    {
+      id: 0,
+      en: 'apple',
+      ch: '蘋果',
+    },
+    {
+      id: 1,
+      en: 'book',
+      ch: '書',
+    },
+    {
+      id: 2,
+      en: 'cat',
+      ch: '貓',
+    },
+    {
+      id: 3,
+      en: 'dog',
+      ch: '狗',
+    },
+    {
+      id: 4,
+      en: 'examine',
+      ch: '檢查、審查',
+    },
+    {
+      id: 5,
+      en: 'cooperate',
+      ch: '協力、合作',
+    },
+  ]
+);
 
 const gotIt = ref(JSON.parse(localStorage.getItem(STORAGE_KEY_gotIt) || '[]'));
 const unfamiliar = ref(
@@ -44,7 +48,9 @@ const unfamiliar = ref(
 const doNotKnow = ref(
   JSON.parse(localStorage.getItem(STORAGE_KEY_doNotKnow) || '[]')
 );
+
 watchEffect(() => {
+  localStorage.setItem(STORAGE_KEY_dummyData, JSON.stringify(dummyData.value));
   localStorage.setItem(STORAGE_KEY_gotIt, JSON.stringify(gotIt.value));
   localStorage.setItem(
     STORAGE_KEY_unfamiliar,
