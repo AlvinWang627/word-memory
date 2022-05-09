@@ -1,5 +1,6 @@
 <script setup>
 import { ref, inject, computed } from 'vue';
+
 const gotItWords = inject('gotItWords');
 const unfamiliarWords = inject('unfamiliarWords');
 const doNotKnowWords = inject('doNotKnowWords');

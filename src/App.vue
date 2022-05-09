@@ -1,13 +1,17 @@
 <script setup>
 import { ref, provide, watchEffect } from 'vue';
 import { RouterView } from 'vue-router';
-const STORAGE_KEY_dummyData = 'memory-dummyData';
+
 const STORAGE_KEY_gotIt = 'memory-word-gotIt';
 const STORAGE_KEY_unfamiliar = 'memory-word-unfamiliar';
 const STORAGE_KEY_doNotKnow = 'memory-word-doNotKnow';
 
-const dummyData = ref(
-  JSON.parse(localStorage.getItem(STORAGE_KEY_dummyData)) || [
+const gotIt = ref(JSON.parse(localStorage.getItem(STORAGE_KEY_gotIt) || '[]'));
+const unfamiliar = ref(
+  JSON.parse(localStorage.getItem(STORAGE_KEY_unfamiliar) || '[]')
+);
+const doNotKnow = ref(
+  JSON.parse(localStorage.getItem(STORAGE_KEY_doNotKnow)) || [
     {
       id: 0,
       en: 'apple',
@@ -41,16 +45,7 @@ const dummyData = ref(
   ]
 );
 
-const gotIt = ref(JSON.parse(localStorage.getItem(STORAGE_KEY_gotIt) || '[]'));
-const unfamiliar = ref(
-  JSON.parse(localStorage.getItem(STORAGE_KEY_unfamiliar) || '[]')
-);
-const doNotKnow = ref(
-  JSON.parse(localStorage.getItem(STORAGE_KEY_doNotKnow) || '[]')
-);
-
 watchEffect(() => {
-  localStorage.setItem(STORAGE_KEY_dummyData, JSON.stringify(dummyData.value));
   localStorage.setItem(STORAGE_KEY_gotIt, JSON.stringify(gotIt.value));
   localStorage.setItem(
     STORAGE_KEY_unfamiliar,
@@ -59,20 +54,30 @@ watchEffect(() => {
   localStorage.setItem(STORAGE_KEY_doNotKnow, JSON.stringify(doNotKnow.value));
 });
 function pushInGotItWord(data) {
-  //將dummyData中的原始單字刪除
-  dummyData.value = dummyData.value.filter((word) => word.id !== data.id);
-  //將記住的單字放到gotIt中
-  gotIt.value.push(data);
+  if (gotIt.value.some((word) => word.id === data.id)) {
+    return;
+  } else {
+    //將doNotKnow及unfamiliar中的單字刪除
+    doNotKnow.value = doNotKnow.value.filter((word) => word.id !== data.id);
+    unfamiliar.value = unfamiliar.value.filter((word) => word.id !== data.id);
+    //將記住的單字放到gotIt中
+    gotIt.value.push(data);
+  }
 }
 function pushInUnfamiliar(data) {
-  //將dummyData中的原始單字刪除
-  dummyData.value = dummyData.value.filter((word) => word.id !== data.id);
-  //將記住的單字放到unfamiliar中
-  unfamiliar.value.push(data);
+  //防止unfamiliar有相同單字
+  if (unfamiliar.value.some((word) => word.id === data.id)) {
+    return;
+  } else {
+    //將doNotKnow中的單字刪除
+    doNotKnow.value = doNotKnow.value.filter((word) => word.id !== data.id);
+    //將記住的單字放到unfamiliar中
+    unfamiliar.value.push(data);
+  }
 }
 function pushInDoNotKnow(data) {
-  //將dummyData中的原始單字刪除
-  dummyData.value = dummyData.value.filter((word) => word.id !== data.id);
+  //將doNotKnow中的單字刪除
+  doNotKnow.value = doNotKnow.value.filter((word) => word.id !== data.id);
   //將記住的單字放到doNotKnow中
   doNotKnow.value.push(data);
 }
@@ -87,7 +92,8 @@ provide('doNotKnowWords', doNotKnow);
     @emitGotIt="pushInGotItWord"
     @emitUnfamiliar="pushInUnfamiliar"
     @emitDoNotKnow="pushInDoNotKnow"
-    :dummy-data="dummyData"
+    :doNotKnow="doNotKnow"
+    :unfamiliar="unfamiliar"
   />
 </template>
 

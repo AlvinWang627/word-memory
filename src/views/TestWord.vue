@@ -3,7 +3,11 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 const router = useRouter();
 const props = defineProps({
-  dummyData: {
+  doNotKnow: {
+    type: Array,
+    required: true,
+  },
+  unfamiliar: {
     type: Array,
     required: true,
   },
@@ -12,18 +16,16 @@ const emit = defineEmits(['emitGotIt', 'emitUnfamiliar', 'emitDoNotKnow']);
 const ansButton = ref(true);
 const unTestWords = ref([]);
 function importWord() {
-  unTestWords.value.splice(0, 0, ...props.dummyData);
+  unTestWords.value.push(...props.doNotKnow, ...props.unfamiliar);
 }
 importWord();
 let length = unTestWords.value.length;
 function gotItButton(word, event) {
   const target = event.target.innerText;
   if (target === '我會了') {
-    // gotIt.value.push({ id: word.id, en: word.en, ch: word.ch });
     unTestWords.value.splice(0, 1);
     emit('emitGotIt', word);
   } else if (target === '不熟') {
-    // unfamiliar.value.push({ id: word.id, en: word.en, ch: word.ch });
     unTestWords.value.splice(0, 1);
     emit('emitUnfamiliar', word);
   } else if (target === '我不會') {
@@ -40,6 +42,11 @@ function gotItButton(word, event) {
 </script>
 
 <template>
+  <div v-show="length === 0">
+    目前沒單字可以測試，返回<router-link :to="{ name: 'homeStartBtn' }"
+      >首頁</router-link
+    >
+  </div>
   <div
     class="container-md text-white vh-100"
     v-for="(word, index) in unTestWords"
