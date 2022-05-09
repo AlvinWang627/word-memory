@@ -1,5 +1,5 @@
 <script setup>
-import { ref, provide } from 'vue';
+import { ref, provide, watchEffect } from 'vue';
 import { RouterView } from 'vue-router';
 const dummyData = ref([
   {
@@ -33,10 +33,25 @@ const dummyData = ref([
     ch: '協力、合作',
   },
 ]);
+const STORAGE_KEY_gotIt = 'memory-word-gotIt';
+const STORAGE_KEY_unfamiliar = 'memory-word-unfamiliar';
+const STORAGE_KEY_doNotKnow = 'memory-word-doNotKnow';
 
-const gotIt = ref([]);
-const unfamiliar = ref([]);
-const doNotKnow = ref([]);
+const gotIt = ref(JSON.parse(localStorage.getItem(STORAGE_KEY_gotIt) || '[]'));
+const unfamiliar = ref(
+  JSON.parse(localStorage.getItem(STORAGE_KEY_unfamiliar) || '[]')
+);
+const doNotKnow = ref(
+  JSON.parse(localStorage.getItem(STORAGE_KEY_doNotKnow) || '[]')
+);
+watchEffect(() => {
+  localStorage.setItem(STORAGE_KEY_gotIt, JSON.stringify(gotIt.value));
+  localStorage.setItem(
+    STORAGE_KEY_unfamiliar,
+    JSON.stringify(unfamiliar.value)
+  );
+  localStorage.setItem(STORAGE_KEY_doNotKnow, JSON.stringify(doNotKnow.value));
+});
 function pushInGotItWord(data) {
   //將dummyData中的原始單字刪除
   dummyData.value = dummyData.value.filter((word) => word.id !== data.id);
@@ -46,16 +61,16 @@ function pushInGotItWord(data) {
 function pushInUnfamiliar(data) {
   //將dummyData中的原始單字刪除
   dummyData.value = dummyData.value.filter((word) => word.id !== data.id);
-  //將記住的單字放到gotIt中
+  //將記住的單字放到unfamiliar中
   unfamiliar.value.push(data);
 }
 function pushInDoNotKnow(data) {
   //將dummyData中的原始單字刪除
   dummyData.value = dummyData.value.filter((word) => word.id !== data.id);
-  //將記住的單字放到gotIt中
+  //將記住的單字放到doNotKnow中
   doNotKnow.value.push(data);
 }
-
+//provide到HomeData.vue
 provide('gotItWords', gotIt);
 provide('unfamiliarWords', unfamiliar);
 provide('doNotKnowWords', doNotKnow);
