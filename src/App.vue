@@ -1,7 +1,7 @@
 <script setup>
 import { ref, provide, watchEffect } from 'vue';
 import { RouterView } from 'vue-router';
-
+//localStorage相關
 const STORAGE_KEY_gotIt = 'memory-word-gotIt';
 const STORAGE_KEY_unfamiliar = 'memory-word-unfamiliar';
 const STORAGE_KEY_doNotKnow = 'memory-word-doNotKnow';
@@ -53,6 +53,8 @@ watchEffect(() => {
   );
   localStorage.setItem(STORAGE_KEY_doNotKnow, JSON.stringify(doNotKnow.value));
 });
+
+//將emit回來的單字做分類
 function pushInGotItWord(data) {
   if (gotIt.value.some((word) => word.id === data.id)) {
     return;

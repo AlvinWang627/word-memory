@@ -15,9 +15,17 @@ const visibility = ref('gotIt');
 function setVisibility(tag) {
   visibility.value = tag;
 }
+
 const filteredWords = computed(() => {
   return filters[visibility.value].value;
 });
+
+function removeWord(word) {
+  filters[visibility.value].value.splice(
+    filters[visibility.value].value.indexOf(word),
+    1
+  );
+}
 </script>
 <template>
   <div class="d-flex justify-content-around m-5">
@@ -78,14 +86,27 @@ const filteredWords = computed(() => {
       <tr>
         <th scope="col">EN</th>
         <th scope="col">CH</th>
+        <th></th>
       </tr>
     </thead>
     <tbody v-for="word in filteredWords">
       <tr class="fs-2">
         <td>{{ word.en }}</td>
         <td>{{ word.ch }}</td>
+        <td class="delete" @click="removeWord(word)"></td>
       </tr>
     </tbody>
   </table>
   <div v-else>尚未有資料</div>
 </template>
+
+<style>
+.delete:after {
+  content: 'x';
+  display: block;
+  line-height: 1.2;
+}
+.delete {
+  width: 40px;
+}
+</style>

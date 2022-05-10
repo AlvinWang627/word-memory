@@ -9,10 +9,13 @@ const test = ref('test');
     <div class="title text-center pt-5 fs-1">Memory word</div>
     <div class="text-center d-flex justify-content-center mt-5 fs-3">
       <router-link :to="{ name: 'homeStartBtn' }"
-        ><div class="me-5">Home</div></router-link
+        ><div class="">Home</div></router-link
       >
       <router-link :to="{ name: 'homeData' }"
-        ><div class="me-1">Data</div></router-link
+        ><div class="mx-5">Data</div></router-link
+      >
+      <router-link :to="{ name: 'setting' }"
+        ><div class="">Setting</div></router-link
       >
     </div>
     <router-view></router-view>

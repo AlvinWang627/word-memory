@@ -20,7 +20,7 @@ function importWord() {
 }
 importWord();
 let length = unTestWords.value.length;
-function gotItButton(word, event) {
+function testButton(word, event) {
   const target = event.target.innerText;
   if (target === '我會了') {
     unTestWords.value.splice(0, 1);
@@ -75,21 +75,21 @@ function gotItButton(word, event) {
         <button
           type="button"
           class="btn btn-primary rounded-pill w-25"
-          @click.stop.prevent="gotItButton(word, $event)"
+          @click.stop.prevent="testButton(word, $event)"
         >
           我會了
         </button>
         <button
           type="button"
           class="btn btn-danger rounded-pill w-25"
-          @click.stop.prevent="gotItButton(word, $event)"
+          @click.stop.prevent="testButton(word, $event)"
         >
           不熟
         </button>
         <button
           type="button"
           class="btn btn-success rounded-pill w-25"
-          @click.stop.prevent="gotItButton(word, $event)"
+          @click.stop.prevent="testButton(word, $event)"
         >
           我不會
         </button>
