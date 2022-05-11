@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import testWord from '../views/TestWord.vue';
 import Home from '../views/Home.vue';
 import HomeStartBtn from '../components/HomeStartBtn.vue';
 import HomeData from '../components/HomeData.vue';

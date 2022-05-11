@@ -26,8 +26,10 @@ function removeWord(word) {
     1
   );
 }
+console.log(visibility.value);
 </script>
 <template>
+  <div>87</div>
   <div class="d-flex justify-content-around m-5">
     <div
       class="btn-group"
@@ -86,7 +88,13 @@ function removeWord(word) {
       <tr>
         <th scope="col">EN</th>
         <th scope="col">CH</th>
-        <th></th>
+        <th class="plus">
+          <i
+            class="bi bi-plus-lg"
+            id="plus"
+            v-show="visibility === 'doNotKnow'"
+          ></i>
+        </th>
       </tr>
     </thead>
     <tbody v-for="word in filteredWords">
@@ -101,6 +109,10 @@ function removeWord(word) {
 </template>
 
 <style>
+#plus {
+  font-size: 23px;
+  cursor: pointer;
+}
 .delete:after {
   content: 'x';
   display: block;
@@ -108,5 +120,6 @@ function removeWord(word) {
 }
 .delete {
   width: 40px;
+  cursor: pointer;
 }
 </style>
