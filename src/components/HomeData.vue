@@ -19,17 +19,9 @@ function setVisibility(tag) {
 const filteredWords = computed(() => {
   return filters[visibility.value].value;
 });
-
-function removeWord(word) {
-  filters[visibility.value].value.splice(
-    filters[visibility.value].value.indexOf(word),
-    1
-  );
-}
-console.log(visibility.value);
 </script>
+
 <template>
-  <div>87</div>
   <div class="d-flex justify-content-around m-5">
     <div
       class="btn-group"
@@ -86,40 +78,22 @@ console.log(visibility.value);
   >
     <thead>
       <tr>
-        <th scope="col">EN</th>
-        <th scope="col">CH</th>
-        <th class="plus">
-          <i
-            class="bi bi-plus-lg"
-            id="plus"
-            v-show="visibility === 'doNotKnow'"
-          ></i>
-        </th>
+        <th scope="col" class="w-50">EN</th>
+        <th scope="col" class="w-50">CH</th>
       </tr>
     </thead>
     <tbody v-for="word in filteredWords">
       <tr class="fs-2">
         <td>{{ word.en }}</td>
         <td>{{ word.ch }}</td>
-        <td class="delete" @click="removeWord(word)"></td>
       </tr>
     </tbody>
   </table>
   <div v-else>尚未有資料</div>
 </template>
 
-<style>
-#plus {
-  font-size: 23px;
-  cursor: pointer;
-}
-.delete:after {
-  content: 'x';
-  display: block;
-  line-height: 1.2;
-}
-.delete {
-  width: 40px;
-  cursor: pointer;
+<style scoped>
+td {
+  word-break: break-all;
 }
 </style>

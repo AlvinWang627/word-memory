@@ -22,7 +22,7 @@ const test = ref('test');
   </div>
 </template>
 
-<style>
+<style scoped>
 .bi bi-arrow-left {
   font-size: 2rem;
 }

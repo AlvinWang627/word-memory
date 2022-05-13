@@ -99,4 +99,4 @@ provide('doNotKnowWords', doNotKnow);
   />
 </template>
 
-<style></style>
+<style scoped></style>

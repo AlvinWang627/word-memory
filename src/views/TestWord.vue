@@ -98,7 +98,8 @@ function testButton(word, event) {
   </div>
 </template>
 
-<style>
+<style scoped>
+
 .button-group {
   display: flex;
   justify-content: space-around;
