@@ -102,7 +102,7 @@ function cancelEdit(wordId) {
     }
     return word;
   });
-  this.toggleIsEditing(wordId);
+  toggleIsEditing(wordId);
 }
 </script>
 
@@ -131,8 +131,8 @@ function cancelEdit(wordId) {
       </div>
     </div>
   </form>
-  <div class="table-setting overflow-auto">
-    <table class="table table-dark table-striped table-hover mt-5">
+  <div class="table-setting overflow-auto mt-5">
+    <table class="table table-dark table-striped table-hover">
       <thead>
         <tr>
           <th scope="col" class="w-50">EN</th>
