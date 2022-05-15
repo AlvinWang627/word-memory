@@ -7,13 +7,12 @@ const doNotKnowWords = inject('doNotKnowWords');
 const inputEnglish = ref('');
 const inputChinese = ref('');
 const wordsList = ref([]);
-const isEditing = ref(false);
 
 function importWords() {
   wordsList.value.push(
-    ...doNotKnowWords.value,
     ...gotItWords.value,
-    ...unfamiliarWords.value
+    ...unfamiliarWords.value,
+    ...doNotKnowWords.value
   );
   wordsList.value = wordsList.value.map((word) => ({
     ...word,
@@ -60,6 +59,18 @@ function removeWord(_word) {
   );
 }
 // edit
+function editWord(editTarget, wordId, enWord, chWord) {
+  for (let i = 0; i < editTarget.value.length; i++) {
+    if (editTarget.value[i].id === wordId) {
+      editTarget.value[i] = {
+        id: wordId,
+        en: enWord,
+        ch: chWord,
+      };
+    }
+  }
+}
+
 function toggleIsEditing(wordId) {
   wordsList.value = wordsList.value.map((word) => {
     if (word.id === wordId) {
@@ -73,8 +84,12 @@ function toggleIsEditing(wordId) {
     return word;
   });
 }
-function updateWord({ wordId, EnWord, ChWord }) {
+function updateWord({ wordId, enWord, chWord }) {
   toggleIsEditing(wordId);
+  // editWord(wordId, enWord, chWord);
+  editWord(gotItWords, wordId, enWord, chWord);
+  editWord(unfamiliarWords, wordId, enWord, chWord);
+  editWord(doNotKnowWords, wordId, enWord, chWord);
 }
 
 function cancelEdit(wordId) {
@@ -160,8 +175,8 @@ function cancelEdit(wordId) {
               @click.stop.prevent="
                 updateWord({
                   wordId: word.id,
-                  EnWord: word.en,
-                  ChWord: word.ch,
+                  enWord: word.en,
+                  chWord: word.ch,
                 })
               "
             ></i>
