@@ -86,7 +86,6 @@ function toggleIsEditing(wordId) {
 }
 function updateWord({ wordId, enWord, chWord }) {
   toggleIsEditing(wordId);
-  // editWord(wordId, enWord, chWord);
   editWord(gotItWords, wordId, enWord, chWord);
   editWord(unfamiliarWords, wordId, enWord, chWord);
   editWord(doNotKnowWords, wordId, enWord, chWord);
@@ -132,7 +131,7 @@ function cancelEdit(wordId) {
       </div>
     </div>
   </form>
-  <div>
+  <div class="table-setting overflow-auto">
     <table class="table table-dark table-striped table-hover mt-5">
       <thead>
         <tr>
@@ -192,6 +191,9 @@ function cancelEdit(wordId) {
   </div>
 </template>
 <style scoped>
+.table-setting {
+  max-height: 650px;
+}
 td {
   word-break: break-all;
 }

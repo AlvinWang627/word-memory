@@ -72,27 +72,32 @@ const filteredWords = computed(() => {
       >
     </div>
   </div>
-  <table
-    v-if="filteredWords.length !== 0"
-    class="table table-dark table-striped table-hover"
-  >
-    <thead>
-      <tr>
-        <th scope="col" class="w-50">EN</th>
-        <th scope="col" class="w-50">CH</th>
-      </tr>
-    </thead>
-    <tbody v-for="word in filteredWords">
-      <tr class="fs-2">
-        <td>{{ word.en }}</td>
-        <td>{{ word.ch }}</td>
-      </tr>
-    </tbody>
-  </table>
-  <div v-else>尚未有資料</div>
+  <div class="data-table overflow-auto">
+    <table
+      v-if="filteredWords.length !== 0"
+      class="table table-dark table-striped table-hover"
+    >
+      <thead>
+        <tr>
+          <th scope="col" class="w-50">EN</th>
+          <th scope="col" class="w-50">CH</th>
+        </tr>
+      </thead>
+      <tbody v-for="word in filteredWords">
+        <tr class="fs-2">
+          <td>{{ word.en }}</td>
+          <td>{{ word.ch }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div v-else>尚未有資料</div>
+  </div>
 </template>
 
 <style scoped>
+.data-table {
+  max-height: 600px;
+}
 td {
   word-break: break-all;
 }
