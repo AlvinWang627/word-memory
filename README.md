@@ -7,8 +7,9 @@
 
 
 ## 網站使用方式
-### step 1 進入網站  
-https://alvinwang627.github.io/word-memory/
+### step 1 進入網站
+<a href="https://alvinwang627.github.io/word-memory/" target="_blank">網站連結</a>
+
 
 ### step 2 點擊setting可以對單字進行增刪改
 增加的單字會直接進入"我不會"的區塊  <br>
