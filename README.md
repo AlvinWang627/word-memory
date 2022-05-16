@@ -11,16 +11,17 @@
 https://alvinwang627.github.io/word-memory/
 
 ### step 2 點擊setting可以對單字進行增刪改
-增加的單字會直接進入"我不會"的區塊  
+增加的單字會直接進入"我不會"的區塊  <br>
+雙擊單字可以對單字進行編輯<br>
  <img src="https://user-images.githubusercontent.com/93432312/168539636-afd5bd78-b819-4925-9c91-1a2f2b155b70.png" width = "350" height = "450" alt="图片名称" align=center />
 ### step 3 回Home 點擊 start memory 開始測試
 
 <img src="https://user-images.githubusercontent.com/93432312/168539909-15fdf960-7878-435a-980a-ed853f151860.png" width = "350" height = "450" alt="图片名称" align=center />
-程式邏輯
-1.測試時若對點選按鈕 "我會了" 單字將會被分類到data頁面got it區塊  
-2.測試時若對點選按鈕 "不熟" 單字將會被分類到data頁面unfamiliar區塊  
-3.測試時若對點選按鈕 "我不會" 單字將會被分類到data頁面donotknow區塊  
-4.測試只會出現"不熟"及"我不會"區塊的單字，"我會了"區塊的單字將不會在測試中出現  
+程式邏輯<br>
+1.測試時若對點選按鈕 "我會了" 單字將會被分類到data頁面got it區塊<br>
+2.測試時若對點選按鈕 "不熟" 單字將會被分類到data頁面unfamiliar區塊<br>
+3.測試時若對點選按鈕 "我不會" 單字將會被分類到data頁面donotknow區塊<br>
+4.測試只會出現"不熟"及"我不會"區塊的單字，"我會了"區塊的單字將不會在測試中出現<br>
 
 ### step 4 測試結束後會跳回Home頁面，點擊Data，至Data頁面
 Data頁面中可以看到測試後的結果  
