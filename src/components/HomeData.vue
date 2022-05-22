@@ -37,10 +37,10 @@ const filteredWords = computed(() => {
         checked
       />
       <label
-        class="btn btn-outline-primary"
+        :class="['btn btn-outline-primary', { active: visibility === 'gotIt' }]"
         for="btnradio1"
         @click="setVisibility('gotIt')"
-        >got it</label
+        >熟知</label
       >
 
       <input
@@ -51,10 +51,13 @@ const filteredWords = computed(() => {
         autocomplete="off"
       />
       <label
-        class="btn btn-outline-primary mx-5"
+        :class="[
+          'btn btn-outline-primary mx-5',
+          { active: visibility === 'unfamiliar' },
+        ]"
         for="btnradio2"
         @click="setVisibility('unfamiliar')"
-        >unfamiliar</label
+        >不熟</label
       >
 
       <input
@@ -65,10 +68,13 @@ const filteredWords = computed(() => {
         autocomplete="off"
       />
       <label
-        class="btn btn-outline-primary"
+        :class="[
+          'btn btn-outline-primary',
+          { active: visibility === 'doNotKnow' },
+        ]"
         for="btnradio3"
         @click="setVisibility('doNotKnow')"
-        >do not know</label
+        >不會</label
       >
     </div>
   </div>
@@ -100,5 +106,22 @@ const filteredWords = computed(() => {
 }
 td {
   word-break: break-all;
+}
+.btn {
+  width: 80px;
+  color: white;
+  height: 3rem;
+  line-height: 2rem;
+  border-color: #31ffb9;
+}
+.btn.active {
+  background-color: #31ffb9;
+  color: #000;
+  border-color: #31ffb9;
+}
+.btn:hover {
+  background-color: #31ffb9;
+  color: #000;
+  border-color: #31ffb9;
 }
 </style>
