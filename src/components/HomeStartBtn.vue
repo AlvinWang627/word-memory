@@ -1,6 +1,8 @@
 <template>
   <router-link :to="{ name: 'test-word' }"
-    ><div class="text-center fs-1" id="start-btn">Start memory</div>
+    ><div class="d-flex justify-content-center fs-1" id="start-btn">
+      Start memory
+    </div>
   </router-link>
 </template>
 
@@ -13,7 +15,9 @@ a {
   padding: 20px;
   border-radius: 100px;
   color: #ffffff;
+  margin: 0 auto;
   margin-top: 20rem;
+  max-width: 420px;
 }
 #start-btn:hover {
   color: #31ffb9;
