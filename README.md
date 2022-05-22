@@ -19,9 +19,9 @@
 
 <img src="https://user-images.githubusercontent.com/93432312/168539909-15fdf960-7878-435a-980a-ed853f151860.png" width = "350" height = "450" alt="图片名称" align=center />
 程式邏輯<br>
-1.測試時若對點選按鈕 "我會了" 單字將會被分類到data頁面got it區塊<br>
-2.測試時若對點選按鈕 "不熟" 單字將會被分類到data頁面unfamiliar區塊<br>
-3.測試時若對點選按鈕 "我不會" 單字將會被分類到data頁面donotknow區塊<br>
+1.測試時若對點選按鈕 "我會了" 單字將會被分類到data頁面熟悉區塊<br>
+2.測試時若對點選按鈕 "不熟" 單字將會被分類到data頁面不熟區塊<br>
+3.測試時若對點選按鈕 "我不會" 單字將會被分類到data頁面不會區塊<br>
 4.測試只會出現"不熟"及"我不會"區塊的單字，"我會了"區塊的單字將不會在測試中出現<br>
 
 ### step 4 測試結束後會跳回Home頁面，點擊Data，至Data頁面
