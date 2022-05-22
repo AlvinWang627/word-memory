@@ -44,6 +44,10 @@ a {
   text-decoration: none;
 }
 .button {
+  min-width: 92px;
+  border: 1px solid #31ffb9;
+  padding: 10px;
+  border-radius: 100px;
   color: #ffffff;
 }
 .button:hover {
@@ -55,4 +59,6 @@ a {
 .container-lg {
   min-height: 851px;
 }
+
+
 </style>
