@@ -42,10 +42,19 @@ function testButton(word, event) {
 </script>
 
 <template>
-  <div v-show="length === 0">
-    目前沒單字可以測試，返回<router-link :to="{ name: 'homeStartBtn' }"
-      >首頁</router-link
-    >
+  <div
+    v-show="length === 0"
+    class="container-md text-white vh-100 bg-dark d-flex align-items-center display-5 p-5 justify-content-center"
+  >
+    <div>
+      <div>目前沒單字可以測試</div>
+
+      <router-link
+        class="homeBtn d-flex justify-content-center mt-5"
+        :to="{ name: 'homeStartBtn' }"
+        >返回首頁</router-link
+      >
+    </div>
   </div>
   <div
     class="container-md text-white vh-100"
@@ -99,7 +108,16 @@ function testButton(word, event) {
 </template>
 
 <style scoped>
-
+.homeBtn {
+  text-decoration: none;
+  color: #31ffb9;
+  border: 1px #31ffb9 solid;
+  border-radius: 100px;
+  padding: 10px;
+}
+.container-md {
+  padding: 0;
+}
 .button-group {
   display: flex;
   justify-content: space-around;
