@@ -44,10 +44,10 @@ function testButton(word, event) {
 <template>
   <div
     v-show="length === 0"
-    class="container-md text-white vh-100 bg-dark d-flex align-items-center display-5 p-5 justify-content-center"
+    class="cover-page container-md text-white vh-100 bg-dark display-5 p-5"
   >
     <div>
-      <div>目前沒單字可以測試</div>
+      <div class="text-center">目前沒單字可以測試</div>
 
       <router-link
         class="homeBtn d-flex justify-content-center mt-5"
@@ -114,6 +114,13 @@ function testButton(word, event) {
   border: 1px #31ffb9 solid;
   border-radius: 100px;
   padding: 10px;
+}
+.cover-page {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 851px;
 }
 .container-md {
   padding: 0;
