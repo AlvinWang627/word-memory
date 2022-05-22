@@ -6,8 +6,7 @@ const nowPage = ref('Home');
 
 <template>
   <div class="container-md text-white vh-100 bg-dark">
-    <div class="title text-center pt-5 fs-1">Memory word</div>
-    <div class="text-center d-flex justify-content-center mt-5 fs-3">
+    <div class="text-center d-flex justify-content-center fs-3 pt-5">
       <router-link :to="{ name: 'homeStartBtn' }"
         ><div
           :class="['button', { active: nowPage === 'Home' }]"
