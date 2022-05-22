@@ -112,7 +112,7 @@ function cancelEdit(wordId) {
       <input
         type="text"
         aria-label="English"
-        class="form-control me-5"
+        class="form-control"
         v-model="inputEnglish"
         id="validationCustom03"
         placeholder="EN"
@@ -120,11 +120,11 @@ function cancelEdit(wordId) {
       <input
         type="text"
         aria-label="Chinese"
-        class="form-control me-5"
+        class="form-control"
         v-model="inputChinese"
         placeholder="CH"
       />
-      <div>
+      <div class="button">
         <button type="submit" class="btn btn-primary" @click.prevent="addWord">
           add word
         </button>
@@ -191,6 +191,9 @@ function cancelEdit(wordId) {
   </div>
 </template>
 <style scoped>
+.form-control {
+  margin-right: 1rem;
+}
 .table-setting {
   max-height: 650px;
 }
@@ -214,5 +217,31 @@ td {
 }
 .cancel:hover {
   color: gray;
+}
+.btn {
+  background-color: #31ffb9;
+  color: #000;
+  border-color: #31ffb9;
+}
+.btn:hover {
+  background-color: #31ffb9;
+  color: #000;
+  border-color: #31ffb9;
+}
+@media screen and (max-width: 576px) {
+  .input-group {
+    display: flex;
+    justify-content: center;
+  }
+  .form-control {
+    margin: 0;
+    width: 470px;
+    margin-bottom: 10px;
+  }
+  .btn {
+    margin: 0 auto;
+    width: 20rem;
+    max-width: 200px;
+  }
 }
 </style>

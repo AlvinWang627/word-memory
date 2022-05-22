@@ -5,7 +5,7 @@ const nowPage = ref('Home');
 </script>
 
 <template>
-  <div class="container-md text-white vh-100 bg-dark">
+  <div class="container-lg text-white bg-dark">
     <div class="text-center d-flex justify-content-center fs-3 pt-5">
       <router-link :to="{ name: 'homeStartBtn' }"
         ><div
@@ -51,5 +51,8 @@ a {
 }
 .button.active {
   color: #31ffb9;
+}
+.container-lg {
+  min-height: 851px;
 }
 </style>
