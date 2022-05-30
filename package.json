@@ -11,6 +11,8 @@
     "bootstrap-icons": "^1.8.1",
     "mitt": "^3.0.0",
     "pinia": "^2.0.13",
+    "sass": "^1.52.1",
+    "sweetalert2": "^11.4.17",
     "uuid": "^8.3.2",
     "vue": "^3.2.33",
     "vue-router": "^4.0.14"

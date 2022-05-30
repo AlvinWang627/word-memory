@@ -1,7 +1,12 @@
 <script setup>
 import { ref } from 'vue';
-
+import Toast from './../utils/helper';
 const nowPage = ref('Home');
+
+Toast.fire({
+  icon: 'success',
+  title: 'Signed in successfully',
+});
 </script>
 
 <template>
@@ -59,6 +64,4 @@ a {
 .container-lg {
   min-height: 851px;
 }
-
-
 </style>
