@@ -1,6 +1,7 @@
 <script setup>
 import { ref, provide, watchEffect } from 'vue';
 import { RouterView } from 'vue-router';
+import Navbar from './components/Navbar.vue';
 //localStorage相關
 const STORAGE_KEY_gotIt = 'memory-word-gotIt';
 const STORAGE_KEY_unfamiliar = 'memory-word-unfamiliar';
@@ -90,6 +91,7 @@ provide('doNotKnowWords', doNotKnow);
 </script>
 
 <template>
+  <Navbar />
   <RouterView
     @emitGotIt="pushInGotItWord"
     @emitUnfamiliar="pushInUnfamiliar"
@@ -98,5 +100,3 @@ provide('doNotKnowWords', doNotKnow);
     :unfamiliar="unfamiliar"
   />
 </template>
-
-<style scoped></style>

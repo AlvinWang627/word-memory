@@ -120,7 +120,7 @@ function testButton(word, event) {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 851px;
+  min-height: 937px;
 }
 .container-md {
   padding: 0;
