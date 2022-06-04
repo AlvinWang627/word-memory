@@ -5,6 +5,11 @@ import Navbar from './../components/Navbar.vue';
 <template>
   <Navbar />
   <div class="container">
-    <router-view></router-view>
+    <router-view class="www"></router-view>
   </div>
 </template>
+<style lang="scss" scoped>
+.container {
+  padding-top: 80px;
+}
+</style>
