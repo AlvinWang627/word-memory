@@ -71,7 +71,7 @@ header {
       position: relative;
       width: 30px;
       height: 3px;
-      background-color: #fff;
+      background-color: $mainColor;
       &::before,
       &::after {
         content: '';
@@ -79,7 +79,7 @@ header {
         left: 0;
         width: 30px;
         height: 3px;
-        background-color: #fff;
+        background-color: $mainColor;
       }
       &::before {
         top: 8px;

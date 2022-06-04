@@ -1,15 +1,10 @@
 <script setup>
-
+import Navbar from './../components/Navbar.vue';
 </script>
 
 <template>
-  <div class="container-lg text-white bg-dark">
+  <Navbar />
+  <div class="container">
     <router-view></router-view>
   </div>
 </template>
-
-<style scoped>
-.container-lg {
-  min-height: 937px;
-}
-</style>
