@@ -4,12 +4,12 @@ import Navbar from './../components/Navbar.vue';
 
 <template>
   <Navbar />
-  <div class="container">
-    <router-view class="www"></router-view>
+  <div class="home">
+    <router-view></router-view>
   </div>
 </template>
 <style lang="scss" scoped>
-.container {
+.home {
   padding-top: 80px;
 }
 </style>

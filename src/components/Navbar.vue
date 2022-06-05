@@ -45,6 +45,7 @@ header {
   width: 100%;
   z-index: 998;
   text-align: center;
+  opacity: 0.9;
 }
 .title {
   color: $mainColor;
