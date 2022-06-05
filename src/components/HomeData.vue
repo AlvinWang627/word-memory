@@ -22,7 +22,7 @@ const filteredWords = computed(() => {
 </script>
 
 <template>
-  <div class="d-flex justify-content-around m-5">
+  <div class="container">
     <div
       class="btn-group"
       role="group"
@@ -37,7 +37,7 @@ const filteredWords = computed(() => {
         checked
       />
       <label
-        :class="['btn btn-outline-primary', { active: visibility === 'gotIt' }]"
+        :class="['btn-label', { active: visibility === 'gotIt' }]"
         for="btnradio1"
         @click="setVisibility('gotIt')"
         >熟知</label
@@ -51,10 +51,7 @@ const filteredWords = computed(() => {
         autocomplete="off"
       />
       <label
-        :class="[
-          'btn btn-outline-primary mx-5',
-          { active: visibility === 'unfamiliar' },
-        ]"
+        :class="['btn-label', { active: visibility === 'unfamiliar' }]"
         for="btnradio2"
         @click="setVisibility('unfamiliar')"
         >不熟</label
@@ -68,60 +65,80 @@ const filteredWords = computed(() => {
         autocomplete="off"
       />
       <label
-        :class="[
-          'btn btn-outline-primary',
-          { active: visibility === 'doNotKnow' },
-        ]"
+        :class="['btn-label', { active: visibility === 'doNotKnow' }]"
         for="btnradio3"
         @click="setVisibility('doNotKnow')"
         >不會</label
       >
     </div>
-  </div>
-  <div class="data-table overflow-auto">
-    <table
-      v-if="filteredWords.length !== 0"
-      class="table table-dark table-striped table-hover"
-    >
-      <thead>
-        <tr>
-          <th scope="col" class="w-50">EN</th>
-          <th scope="col" class="w-50">CH</th>
-        </tr>
-      </thead>
-      <tbody v-for="word in filteredWords">
-        <tr class="fs-2">
-          <td>{{ word.en }}</td>
-          <td>{{ word.ch }}</td>
-        </tr>
-      </tbody>
-    </table>
-    <div v-else>尚未有資料</div>
+    <div class="table-group">
+      <table v-if="filteredWords.length !== 0">
+        <thead>
+          <tr>
+            <th scope="col">EN</th>
+            <th scope="col">CH</th>
+          </tr>
+        </thead>
+        <tbody v-for="word in filteredWords">
+          <tr>
+            <td>{{ word.en }}</td>
+            <td>{{ word.ch }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div v-else>尚未有資料</div>
+    </div>
   </div>
 </template>
 
-<style scoped>
-.data-table {
-  max-height: 600px;
+<style lang="scss" scoped>
+.container {
+  width: 90%;
 }
-td {
-  word-break: break-all;
+.btn-group {
+  display: flex;
+  justify-content: space-around;
+  input {
+    display: none;
+  }
+  .btn-label {
+    text-align: center;
+    line-height: 30px;
+    margin: 0 10px;
+    width: 100%;
+    max-width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: $mainTextColor;
+    cursor: pointer;
+    &:hover {
+    }
+    &.active {
+      background-color: red;
+    }
+  }
 }
-.btn {
-  width: 80px;
-  color: white;
-  height: 3rem;
-  line-height: 2rem;
-  border-color: #31ffb9;
-}
-.btn.active {
-  background-color: #31ffb9;
-  color: #000;
-  border-color: #31ffb9;
-}
-.btn:hover {
-  background-color: #31ffb9;
-  color: #000;
-  border-color: #31ffb9;
+.table-group {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  th {
+    padding-bottom: 10px;
+    font-size: 1.3rem;
+  }
+  td {
+    word-break: break-all;
+    max-width: 100%;
+    font-size: 1.2rem;
+    padding: 10px 0;
+    padding-left: 10px;
+    border-top: 1px solid $borderColor;
+  }
+  tbody {
+    &:nth-child(even) {
+      background-color: $secondaryTextColor;
+    }
+  }
 }
 </style>

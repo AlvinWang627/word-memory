@@ -34,10 +34,12 @@
 <style lang="scss" scoped>
 .card {
   margin-bottom: 2rem;
+  text-align: center;
   img {
-    width: 100%;
+    width: 80%;
     height: 300px;
     object-fit: cover;
+    border-radius: 10px;
   }
 }
 .start-btn {
@@ -57,7 +59,6 @@
     }
   }
 }
-
 .footer {
   line-height: 30px;
   text-align: center;
