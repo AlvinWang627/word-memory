@@ -128,11 +128,11 @@ const filteredWords = computed(() => {
     font-size: 1.3rem;
   }
   td {
+    min-width: 150px;
     word-break: break-all;
     max-width: 100%;
     font-size: 1.2rem;
-    padding: 10px 0;
-    padding-left: 10px;
+    padding: 0.5rem;
     border-top: 1px solid $borderColor;
   }
   tbody {
