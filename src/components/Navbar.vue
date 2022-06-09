@@ -50,6 +50,9 @@ const navbarToggle = ref(false);
           Setting
         </div>
       </router-link>
+      <div class="space" @click="navbarToggle = false">
+        put something in here let feature work
+      </div>
     </nav>
   </header>
 </template>
@@ -119,7 +122,6 @@ header {
   position: absolute;
   top: 100%;
   width: 100%;
-  border-bottom: 1px solid $borderColor;
   transform: scale(1, 0);
   transform-origin: top;
   transition: transform 0.3s ease-out;
@@ -129,11 +131,18 @@ header {
     font-size: 1.2rem;
     line-height: 50px;
     color: $mainColor;
+    border-bottom: 1px solid $borderColor;
+    opacity: 0;
     &:hover,
     &.active {
       color: $mainTextColor;
       background-color: $bgColor;
     }
+  }
+  .space {
+    width: 100%;
+    height: 100vh;
+    background-color: $navBgColor;
     opacity: 0;
   }
 }
@@ -158,7 +167,11 @@ header {
     justify-content: end;
     grid-gap: 2rem;
     .button {
+      border-bottom: 0;
       opacity: 1;
+    }
+    .space {
+      display: none;
     }
   }
 }
