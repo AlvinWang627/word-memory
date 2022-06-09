@@ -1,10 +1,17 @@
 <script setup>
 import { ref } from 'vue';
 const nowPage = ref('Home');
+const navbarToggle = ref(false);
 </script>
 <template>
   <header>
-    <input type="checkbox" class="navbar-toggle" id="navbar-toggle" />
+    <input
+      type="checkbox"
+      class="navbar-toggle"
+      id="navbar-toggle"
+      :checked="navbarToggle === true"
+      @click="navbarToggle = !navbarToggle"
+    />
     <label for="navbar-toggle" class="navbar-toggle-label">
       <span class="hamburger"></span>
       <span class="circle"></span>
@@ -12,7 +19,10 @@ const nowPage = ref('Home');
     <router-link class="brand" :to="{ name: 'homeStartBtn' }"
       ><span
         :class="['title', { active: nowPage === 'Home' }]"
-        @click="nowPage = 'Home'"
+        @click="
+          nowPage = 'Home';
+          navbarToggle = !navbarToggle;
+        "
       >
         Memory Word
       </span></router-link
@@ -21,7 +31,10 @@ const nowPage = ref('Home');
       <router-link :to="{ name: 'homeData' }"
         ><div
           :class="['button', { active: nowPage === 'Data' }]"
-          @click="nowPage = 'Data'"
+          @click="
+            nowPage = 'Data';
+            navbarToggle = !navbarToggle;
+          "
         >
           Data
         </div></router-link
@@ -29,7 +42,10 @@ const nowPage = ref('Home');
       <router-link :to="{ name: 'setting' }"
         ><div
           :class="['button', { active: nowPage === 'Setting' }]"
-          @click="nowPage = 'Setting'"
+          @click="
+            nowPage = 'Setting';
+            navbarToggle = !navbarToggle;
+          "
         >
           Setting
         </div>
