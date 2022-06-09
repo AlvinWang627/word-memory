@@ -21,7 +21,7 @@ const navbarToggle = ref(false);
         :class="['title', { active: nowPage === 'Home' }]"
         @click="
           nowPage = 'Home';
-          navbarToggle = !navbarToggle;
+          navbarToggle = false;
         "
       >
         Memory Word
