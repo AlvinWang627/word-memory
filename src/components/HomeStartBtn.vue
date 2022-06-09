@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="card">
-      <img src="https://i.imgur.com/QyuBAFu.jpg" alt="" class="card_img" />
+      <img src="https://i.imgur.com/Vtkltjr.jpg" alt="" class="card_img" />
       <div class="card_text">
         將單字依照熟悉度快速分成三類
         <router-link class="start-btn" :to="{ name: 'test-word' }"
@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="card">
-      <img src="https://i.imgur.com/GO326Ez.jpg" alt="" class="card_img" />
+      <img src="https://i.imgur.com/Xy5jhSO.gif" alt="" class="card_img" />
       <div class="card_text">
         於Data頁面觀看單字的熟悉程度
         <router-link class="start-btn" :to="{ name: 'test-word' }"
@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="card">
-      <img src="https://i.imgur.com/xmihAhr.jpg" alt="" class="card_img" />
+      <img src="https://i.imgur.com/CGuatLy.gif" alt="" class="card_img" />
       <div class="card_text">
         在Setting頁面對單字進行新增、移除、修改
         <router-link class="start-btn" :to="{ name: 'test-word' }"
@@ -36,10 +36,14 @@
   margin-bottom: 2rem;
   text-align: center;
   img {
-    width: 80%;
-    height: 300px;
-    object-fit: cover;
+    width: 300px;
+    height: 250px;
+    // object-fit: cover;
     border-radius: 10px;
+    border: 2px solid #ffffff;
+  }
+  .card_text {
+    margin-top: 5px;
   }
 }
 .start-btn {
@@ -55,7 +59,7 @@
     margin-top: 1rem;
     transition: background-color 0.5s ease-out;
     &:hover {
-      background-color: $borderColor;
+      background-color: #238262;
     }
   }
 }
@@ -68,6 +72,7 @@
   .container {
     .card {
       display: flex;
+      justify-content: center;
       .card_text {
         display: flex;
         flex-direction: column;

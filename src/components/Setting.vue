@@ -127,7 +127,7 @@ function cancelEdit(wordId) {
         />
         <div class="button">
           <button type="submit" class="submit" @click.prevent="addWord">
-            add word
+            新增單字
           </button>
         </div>
       </div>
@@ -220,13 +220,12 @@ function cancelEdit(wordId) {
     width: 100%;
     max-width: 100px;
     height: 30px;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: $mainTextColor;
     border: 0;
+    font-weight: bold;
     cursor: pointer;
-    &:hover {
-      background-color: red;
-    }
+    color: $bgColor;
   }
 }
 .table-group {
@@ -239,6 +238,9 @@ function cancelEdit(wordId) {
       padding-bottom: 5px;
     }
     tbody {
+      .icon {
+        cursor: pointer;
+      }
       td {
         padding: 0.5rem;
       }

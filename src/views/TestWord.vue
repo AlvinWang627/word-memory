@@ -88,11 +88,17 @@ function testButton(word, event) {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  position: relative;
   .wordEn {
     width: 100%;
-    padding: 5px 0;
-    background-color: red;
-    flex: 1;
+    padding: 10px 0;
+    background-color: $borderColor;
+    font-size: 1.5rem;
+    #arrow {
+      position: absolute;
+      top: 10px;
+      left: 5px;
+    }
   }
   .translate,
   .wordCh {
@@ -100,24 +106,27 @@ function testButton(word, event) {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 95.3vh;
-    background-color: $mainTextColor;
+    height: 92.3vh;
+    background-color: $bgColor;
+    font-size: 1.5rem;
   }
   .wordCh {
-    height: 87vh;
+    height: 84vh;
   }
   .button-group {
     display: flex;
     align-items: center;
     justify-content: space-around;
     width: 100%;
-    background-color: $mainTextColor;
+    background-color: $bgColor;
     height: 8.3vh;
     .btn {
       border: 0;
       border-radius: 5px;
       width: 20%;
       height: 30px;
+      cursor: pointer;
+      color: #ffffff;
     }
     .btn:nth-child(1) {
       background-color: #dc3545;
