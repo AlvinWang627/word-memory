@@ -98,5 +98,3 @@ provide('doNotKnowWords', doNotKnow);
     :unfamiliar="unfamiliar"
   />
 </template>
-
-<style scoped></style>

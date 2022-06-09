@@ -107,141 +107,168 @@ function cancelEdit(wordId) {
 </script>
 
 <template>
-  <form action="" needs-validation>
-    <div class="input-group mt-5">
-      <input
-        type="text"
-        aria-label="English"
-        class="form-control"
-        v-model="inputEnglish"
-        id="validationCustom03"
-        placeholder="EN"
-      />
-      <input
-        type="text"
-        aria-label="Chinese"
-        class="form-control"
-        v-model="inputChinese"
-        placeholder="CH"
-      />
-      <div class="button">
-        <button type="submit" class="btn btn-primary" @click.prevent="addWord">
-          add word
-        </button>
+  <div class="container">
+    <form action="" needs-validation>
+      <div class="input-group">
+        <input
+          type="text"
+          aria-label="English"
+          class="input"
+          v-model="inputEnglish"
+          id="validationCustom03"
+          placeholder="EN"
+        />
+        <input
+          type="text"
+          aria-label="Chinese"
+          class="input"
+          v-model="inputChinese"
+          placeholder="CH"
+        />
+        <div class="button">
+          <button type="submit" class="submit" @click.prevent="addWord">
+            新增單字
+          </button>
+        </div>
       </div>
+    </form>
+    <div class="table-group">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">EN</th>
+            <th scope="col">CH</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody v-for="word in wordsList">
+          <tr>
+            <td>
+              <div
+                v-show="!word.isEditing"
+                @dblclick="toggleIsEditing(word.id)"
+              >
+                {{ word.en }}
+              </div>
+              <input
+                class="edit-inputEn"
+                type="text"
+                v-show="word.isEditing"
+                v-model="word.en"
+              />
+            </td>
+            <td class="wordEn">
+              <div
+                v-show="!word.isEditing"
+                @dblclick="toggleIsEditing(word.id)"
+              >
+                {{ word.ch }}
+              </div>
+              <input
+                class="edit-input"
+                type="text"
+                v-show="word.isEditing"
+                v-model="word.ch"
+              />
+              <span class="cancel" v-show="word.isEditing"
+                ><i
+                  class="bi bi-x"
+                  @click.stop.prevent="cancelEdit(word.id)"
+                ></i
+              ></span>
+            </td>
+            <td class="icon">
+              <i
+                class="bi bi-check-lg"
+                v-show="word.isEditing"
+                @click.stop.prevent="
+                  updateWord({
+                    wordId: word.id,
+                    enWord: word.en,
+                    chWord: word.ch,
+                  })
+                "
+              ></i>
+              <i
+                class="bi bi-trash"
+                v-show="!word.isEditing"
+                @click="removeWord(word)"
+              ></i>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  </form>
-  <div class="table-setting overflow-auto mt-5">
-    <table class="table table-dark table-striped table-hover">
-      <thead>
-        <tr>
-          <th scope="col" class="w-50">EN</th>
-          <th scope="col" class="w-50">CH</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody v-for="word in wordsList">
-        <tr class="fs-2">
-          <td>
-            <div v-show="!word.isEditing" @dblclick="toggleIsEditing(word.id)">
-              {{ word.en }}
-            </div>
-            <input
-              class="w-100 h-100 ps-2"
-              type="text"
-              v-show="word.isEditing"
-              v-model="word.en"
-            />
-          </td>
-          <td class="wordEn">
-            <div v-show="!word.isEditing" @dblclick="toggleIsEditing(word.id)">
-              {{ word.ch }}
-            </div>
-            <input
-              class="w-100 h-100 ps-2"
-              type="text"
-              v-show="word.isEditing"
-              v-model="word.ch"
-            />
-            <span class="cancel" v-show="word.isEditing"
-              ><i class="bi bi-x" @click.stop.prevent="cancelEdit(word.id)"></i
-            ></span>
-          </td>
-          <td class="icon">
-            <i
-              class="bi bi-check-lg"
-              v-show="word.isEditing"
-              @click.stop.prevent="
-                updateWord({
-                  wordId: word.id,
-                  enWord: word.en,
-                  chWord: word.ch,
-                })
-              "
-            ></i>
-            <i
-              class="bi bi-trash"
-              v-show="!word.isEditing"
-              @click="removeWord(word)"
-            ></i>
-          </td>
-        </tr>
-      </tbody>
-    </table>
   </div>
 </template>
-<style scoped>
-.form-control {
-  margin-right: 1rem;
+<style lang="scss" scoped>
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .input {
+    font-size: 20px;
+    height: 30px;
+    width: 60%;
+    max-width: 70%;
+    margin-top: 5px;
+  }
+  .submit {
+    margin-top: 5px;
+    color: $mainColor;
+    padding: 0 10px;
+    width: 100%;
+    max-width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: $mainTextColor;
+    border: 0;
+    font-weight: bold;
+    cursor: pointer;
+    color: $bgColor;
+  }
 }
-.table-setting {
-  max-height: 650px;
-}
-td {
-  word-break: break-all;
-}
-.icon {
-  cursor: pointer;
-}
-.icon :hover {
-  color: gray;
+.table-group {
+  text-align: center;
+  margin-top: 1rem;
+  table {
+    width: 100%;
+    margin: 0 auto;
+    th {
+      padding-bottom: 5px;
+    }
+    tbody {
+      .icon {
+        cursor: pointer;
+      }
+      td {
+        padding: 0.5rem;
+      }
+      margin-bottom: 5px;
+      &:nth-child(even) {
+        background-color: $secondaryTextColor;
+      }
+      .edit-input {
+        padding-right: 12px;
+        width: 100%;
+        font-size: 20px;
+      }
+      .edit-inputEn {
+        font-size: 20px;
+        width: 100%;
+      }
+    }
+  }
 }
 .wordEn {
+  word-break: break-all;
   position: relative;
 }
 .cancel {
   position: absolute;
-  color: black;
-  right: 15px;
+  color: $bgColor;
+  top: 13px;
+  right: -10px;
   cursor: pointer;
-}
-.cancel:hover {
-  color: gray;
-}
-.btn {
-  background-color: #31ffb9;
-  color: #000;
-  border-color: #31ffb9;
-}
-.btn:hover {
-  background-color: #31ffb9;
-  color: #000;
-  border-color: #31ffb9;
-}
-@media screen and (max-width: 576px) {
-  .input-group {
-    display: flex;
-    justify-content: center;
-  }
-  .form-control {
-    margin: 0;
-    width: 470px;
-    margin-bottom: 10px;
-  }
-  .btn {
-    margin: 0 auto;
-    width: 20rem;
-    max-width: 200px;
-  }
 }
 </style>

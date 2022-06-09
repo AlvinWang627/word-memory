@@ -42,102 +42,122 @@ function testButton(word, event) {
 </script>
 
 <template>
-  <div
-    v-show="length === 0"
-    class="cover-page container-md text-white vh-100 bg-dark display-5 p-5"
-  >
-    <div>
-      <div class="text-center">目前沒單字可以測試</div>
+  <div v-show="length === 0" class="cover-page">
+    <div class="hint">
+      <div class="text">目前沒單字可以測試</div>
 
-      <router-link
-        class="homeBtn d-flex justify-content-center mt-5"
-        :to="{ name: 'homeStartBtn' }"
+      <router-link class="homeBtn" :to="{ name: 'homeStartBtn' }"
         >返回首頁</router-link
       >
     </div>
   </div>
   <div
-    class="container-md text-white vh-100"
+    class="container"
     v-for="(word, index) in unTestWords"
     :key="word.id"
     v-show="index === 0"
   >
-    <div
-      class="text-center bg-secondary fs-2 h-100 my-auto d-flex flex-column justify-content-between"
-    >
-      <div class="text-center fs-2 bg-dark py-2 position-relative">
-        <router-link :to="{ name: 'homeStartBtn' }" style="color: white">
-          <i class="bi bi-chevron-left" id="arrow"></i>
-        </router-link>
-        {{ word.en }}
-      </div>
-      <div
-        class="h-100"
-        id="translate"
-        v-show="ansButton"
-        @click="ansButton = !ansButton"
-      >
-        點這裡看翻譯
-      </div>
-      <div v-show="!ansButton">{{ word.ch }}</div>
-      <div class="button-group" v-show="!ansButton">
-        <button
-          type="button"
-          class="btn btn-primary rounded-pill w-25"
-          @click.stop.prevent="testButton(word, $event)"
-        >
-          我會了
-        </button>
-        <button
-          type="button"
-          class="btn btn-danger rounded-pill w-25"
-          @click.stop.prevent="testButton(word, $event)"
-        >
-          不熟
-        </button>
-        <button
-          type="button"
-          class="btn btn-success rounded-pill w-25"
-          @click.stop.prevent="testButton(word, $event)"
-        >
-          我不會
-        </button>
-      </div>
+    <div class="wordEn">
+      <router-link :to="{ name: 'homeStartBtn' }" style="color: white">
+        <i class="bi bi-chevron-left" id="arrow"></i>
+      </router-link>
+      {{ word.en }}
+    </div>
+    <div class="translate" v-show="ansButton" @click="ansButton = !ansButton">
+      點這裡看翻譯
+    </div>
+    <div class="wordCh" v-show="!ansButton">{{ word.ch }}</div>
+    <div class="button-group" v-show="!ansButton">
+      <button class="btn" @click.stop.prevent="testButton(word, $event)">
+        我會了
+      </button>
+      <button class="btn" @click.stop.prevent="testButton(word, $event)">
+        不熟
+      </button>
+      <button class="btn" @click.stop.prevent="testButton(word, $event)">
+        我不會
+      </button>
     </div>
   </div>
 </template>
 
-<style scoped>
-.homeBtn {
-  text-decoration: none;
-  color: #31ffb9;
-  border: 1px #31ffb9 solid;
-  border-radius: 100px;
-  padding: 10px;
-}
-.cover-page {
-  padding: 0;
+<style lang="scss" scoped>
+.container {
+  width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 851px;
+  text-align: center;
+  position: relative;
+  .wordEn {
+    width: 100%;
+    padding: 10px 0;
+    background-color: $borderColor;
+    font-size: 1.5rem;
+    #arrow {
+      position: absolute;
+      top: 10px;
+      left: 5px;
+    }
+  }
+  .translate,
+  .wordCh {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 92.3vh;
+    background-color: $bgColor;
+    font-size: 1.5rem;
+  }
+  .wordCh {
+    height: 84vh;
+  }
+  .button-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    background-color: $bgColor;
+    height: 8.3vh;
+    .btn {
+      border: 0;
+      border-radius: 5px;
+      width: 20%;
+      height: 30px;
+      cursor: pointer;
+      color: #ffffff;
+    }
+    .btn:nth-child(1) {
+      background-color: #dc3545;
+    }
+    .btn:nth-child(2) {
+      background-color: #0d6efd;
+    }
+    .btn:nth-child(3) {
+      background-color: #198754;
+    }
+  }
 }
-.container-md {
-  padding: 0;
-}
-.button-group {
-  display: flex;
-  justify-content: space-around;
-  padding-bottom: 1rem;
-}
-#translate {
+.hint {
+  height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-#arrow {
-  position: absolute;
-  top: 10px;
-  left: 15px;
+  flex-direction: column;
+  .text {
+    padding: 10px;
+  }
+  .homeBtn {
+    text-align: center;
+    border: 0;
+    border-radius: 5px;
+    width: 100px;
+    line-height: 28px;
+    height: 30px;
+    color: $mainColor;
+    background-color: #198754;
+  }
 }
 </style>
