@@ -253,7 +253,6 @@ function cancelEdit(wordId) {
       }
       .edit-inputEn {
         font-size: 20px;
-        // padding-right: 14px;
         width: 100%;
       }
     }
@@ -265,8 +264,8 @@ function cancelEdit(wordId) {
 }
 .cancel {
   position: absolute;
-  color: red;
-  top: 14px;
+  color: $bgColor;
+  top: 13px;
   right: -10px;
   cursor: pointer;
 }

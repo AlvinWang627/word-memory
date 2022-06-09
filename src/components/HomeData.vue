@@ -120,9 +120,10 @@ const filteredWords = computed(() => {
 }
 .table-group {
   text-align: center;
-  display: flex;
-  justify-content: center;
   margin-top: 2rem;
+  table {
+    width: 100%;
+  }
   th {
     padding-bottom: 10px;
     font-size: 1.3rem;
