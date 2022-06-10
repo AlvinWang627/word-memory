@@ -142,4 +142,10 @@ const filteredWords = computed(() => {
     }
   }
 }
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 65%;
+  }
+}
 </style>

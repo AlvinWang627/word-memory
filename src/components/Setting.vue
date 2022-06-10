@@ -202,35 +202,36 @@ function cancelEdit(wordId) {
   </div>
 </template>
 <style lang="scss" scoped>
+.container {
+  width: 90%;
+}
 .input-group {
   display: flex;
   flex-direction: column;
   align-items: center;
   .input {
     font-size: 20px;
-    height: 30px;
-    width: 60%;
+    height: 50px;
+    width: 70%;
     max-width: 70%;
     margin-top: 5px;
   }
   .submit {
-    margin-top: 5px;
-    color: $mainColor;
-    padding: 0 10px;
-    width: 100%;
-    max-width: 100px;
-    height: 30px;
-    border-radius: 10px;
+    margin: 1rem 0;
+    padding: 15px 80px;
+    border-radius: 100px;
     background-color: $mainTextColor;
     border: 0;
     font-weight: bold;
     cursor: pointer;
-    color: $bgColor;
+    color: $mainColor;
+    font-size: 1.2rem;
   }
 }
 .table-group {
   text-align: center;
   margin-top: 1rem;
+  font-size: 1.25rem;
   table {
     width: 100%;
     margin: 0 auto;
@@ -270,5 +271,10 @@ function cancelEdit(wordId) {
   top: 13px;
   right: -10px;
   cursor: pointer;
+}
+@media screen and (min-width: 768px) {
+  .container {
+    width: 65%;
+  }
 }
 </style>

@@ -69,19 +69,36 @@
   background-color: $navBgColor;
 }
 @media screen and (min-width: 768px) {
+  .card {
+    display: flex;
+    justify-content: center;
+    img {
+      width: 400px;
+      height: 350px;
+    }
+    .card_text {
+      font-size: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 5px;
+    }
+  }
+  .card:nth-child(2) {
+    flex-direction: row-reverse;
+  }
+}
+@media screen and (min-width: 992px) {
   .container {
     .card {
-      display: flex;
-      justify-content: center;
-      .card_text {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 0 5px;
+      img {
+        width: 500px;
+        height: 450px;
       }
-    }
-    .card:nth-child(2) {
-      flex-direction: row-reverse;
+      .card_text {
+        padding: 0 1.2rem;
+        font-size: 1.5rem;
+      }
     }
   }
 }

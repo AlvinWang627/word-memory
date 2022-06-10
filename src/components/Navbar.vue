@@ -149,7 +149,7 @@ header {
 @media screen and (min-width: 768px) {
   header {
     display: grid;
-    grid-template-columns: 0.5fr auto minmax(500px, 3fr) 0.5fr;
+    grid-template-columns: 1fr auto minmax(550px, 3fr) 1fr;
   }
   .brand {
     grid-column: 2 / 3;
