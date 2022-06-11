@@ -27,8 +27,7 @@ function addWord() {
     inputEnglish.value.trim().length === 0
   ) {
     return alert('不可以空白');
-  }
-  if (
+  } else if (
     wordsList.value.some((wordEn) => wordEn.en === inputEnglish.value.trim())
   ) {
     return alert('單字已經存在');
@@ -49,14 +48,13 @@ function addWord() {
 }
 
 function removeWord(_word) {
-  wordsList.value = wordsList.value.filter((word) => word.id !== _word.id);
-  doNotKnowWords.value = doNotKnowWords.value.filter(
-    (word) => word.id !== _word.id
-  );
-  gotItWords.value = gotItWords.value.filter((word) => word.id !== _word.id);
-  unfamiliarWords.value = unfamiliarWords.value.filter(
-    (word) => word.id !== _word.id
-  );
+  function removeHelper(arr) {
+    arr.value = arr.value.filter((word) => word.id !== _word.id);
+  }
+  removeHelper(wordsList);
+  removeHelper(doNotKnowWords);
+  removeHelper(gotItWords);
+  removeHelper(unfamiliarWords);
 }
 // edit
 function editWord(editTarget, wordId, enWord, chWord) {

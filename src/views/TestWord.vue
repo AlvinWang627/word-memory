@@ -15,29 +15,27 @@ const props = defineProps({
 const emit = defineEmits(['emitGotIt', 'emitUnfamiliar', 'emitDoNotKnow']);
 const ansButton = ref(true);
 const unTestWords = ref([]);
-function importWord() {
+(function importWord() {
   unTestWords.value.push(...props.doNotKnow, ...props.unfamiliar);
-}
-importWord();
+})();
+
 let length = unTestWords.value.length;
 function testButton(word, event) {
   const target = event.target.innerText;
   if (target === '我會了') {
-    unTestWords.value.splice(0, 1);
     emit('emitGotIt', word);
   } else if (target === '不熟') {
-    unTestWords.value.splice(0, 1);
     emit('emitUnfamiliar', word);
   } else if (target === '我不會') {
-    unTestWords.value.splice(0, 1);
     emit('emitDoNotKnow', word);
   }
+  unTestWords.value.splice(0, 1);
   length--;
   if (length === 0) {
     alert('words are tested');
     router.push({ name: 'homeStartBtn' });
   }
-  ansButton.value = !ansButton.value;
+  ansButton.value = true;
 }
 </script>
 
@@ -45,7 +43,6 @@ function testButton(word, event) {
   <div v-show="length === 0" class="cover-page">
     <div class="hint">
       <div class="text">目前沒單字可以測試</div>
-
       <router-link class="homeBtn" :to="{ name: 'homeStartBtn' }"
         >返回首頁</router-link
       >
@@ -63,7 +60,7 @@ function testButton(word, event) {
       </router-link>
       {{ word.en }}
     </div>
-    <div class="translate" v-show="ansButton" @click="ansButton = !ansButton">
+    <div class="translate" v-show="ansButton" @click="ansButton = false">
       點這裡看翻譯
     </div>
     <div class="wordCh" v-show="!ansButton">{{ word.ch }}</div>
@@ -162,9 +159,9 @@ function testButton(word, event) {
   }
 }
 @media screen and (min-width: 768px) {
-  .container{
-    .button-group{
-      .btn{
+  .container {
+    .button-group {
+      .btn {
         width: 20%;
       }
     }

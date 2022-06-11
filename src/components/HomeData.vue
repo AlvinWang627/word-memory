@@ -4,6 +4,7 @@ import { ref, inject, computed } from 'vue';
 const gotItWords = inject('gotItWords');
 const unfamiliarWords = inject('unfamiliarWords');
 const doNotKnowWords = inject('doNotKnowWords');
+const visibility = ref('gotIt');
 
 const filters = {
   gotIt: gotItWords,
@@ -11,7 +12,6 @@ const filters = {
   doNotKnow: doNotKnowWords,
 };
 
-const visibility = ref('gotIt');
 function setVisibility(tag) {
   visibility.value = tag;
 }
