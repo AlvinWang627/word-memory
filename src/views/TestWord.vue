@@ -148,14 +148,16 @@ function testButton(word, event) {
     padding: 10px;
   }
   .homeBtn {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    justify-content: center;
     border: 0;
-    border-radius: 5px;
-    width: 100px;
-    line-height: 28px;
-    height: 30px;
+    border-radius: 25px;
+    width: 50%;
+    height: 50px;
     color: $mainColor;
-    background-color: #198754;
+    background-color: $mainTextColor;
   }
 }
 @media screen and (min-width: 768px) {
@@ -164,6 +166,11 @@ function testButton(word, event) {
       .btn {
         width: 20%;
       }
+    }
+  }
+  .hint{
+    .homeBtn {
+      width: 20%;
     }
   }
 }

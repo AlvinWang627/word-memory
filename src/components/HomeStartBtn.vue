@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="card">
-      <img src="https://i.imgur.com/Vtkltjr.jpg" alt="" class="card_img" />
+      <img src="https://i.imgur.com/5mvOR7v.jpeg" alt="" class="card_img" />
       <div class="card_text">
         將單字依照熟悉度快速分成三類
         <router-link class="start-btn" :to="{ name: 'test-word' }"

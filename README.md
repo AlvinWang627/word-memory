@@ -11,17 +11,20 @@
 
 ### <a href="https://alvinwang627.github.io/word-memory/" target="_blank">網站連結</a>
 <br>
-<img src="https://user-images.githubusercontent.com/93432312/169701120-536ee7cd-4adb-44d5-bce6-5be324edacfe.png" width = "300" height = "450" alt="图片名称" align=center />
+<img src="https://i.imgur.com/sRPN89U.jpg" width = "700" height = "450" alt="图片名称" align=center />
 
 ### step 2 點擊setting可以對單字進行增刪改
 增加的單字會直接進入"我不會"的區塊  <br>
 雙擊單字可以對單字進行編輯<br>
 
- <img src="https://user-images.githubusercontent.com/93432312/169701437-0061d823-b76d-4135-acc9-56730c661de7.png" width = "300" height = "450" alt="图片名称" align=center />  
+ <img src="https://i.imgur.com/CGuatLy.gif" width = "450" height = "500" alt="图片名称" align=center />  
  
 ###  step 3 回Home 點擊 start memory 開始測試
 
-<img src="https://user-images.githubusercontent.com/93432312/168539909-15fdf960-7878-435a-980a-ed853f151860.png" width = "300" height = "450" alt="图片名称" align=center />
+<img src="https://i.imgur.com/CqL37zO.jpg" width = "390" height = "800" alt="图片名称" align=center />
+
+<img src="https://i.imgur.com/5mvOR7v.jpeg" width = "400" height = "450" alt="图片名称" align=center />
+
 程式邏輯<br>
 1.測試時若對點選按鈕 "我會了" 單字將會被分類到data頁面熟悉區塊<br>
 2.測試時若對點選按鈕 "不熟" 單字將會被分類到data頁面不熟區塊<br>
