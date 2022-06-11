@@ -122,9 +122,10 @@ function testButton(word, event) {
     height: 8.3vh;
     .btn {
       border: 0;
-      border-radius: 5px;
-      width: 20%;
-      height: 30px;
+      border-radius: 25px;
+      width: 30%;
+      height: 40px;
+      font-size: 20px;
       cursor: pointer;
       color: #ffffff;
     }
@@ -158,6 +159,15 @@ function testButton(word, event) {
     height: 30px;
     color: $mainColor;
     background-color: #198754;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container{
+    .button-group{
+      .btn{
+        width: 20%;
+      }
+    }
   }
 }
 </style>

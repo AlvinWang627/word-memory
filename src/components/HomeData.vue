@@ -102,13 +102,14 @@ const filteredWords = computed(() => {
     display: none;
   }
   .btn-label {
+    padding: 10px;
     text-align: center;
     line-height: 30px;
     margin: 0 10px;
     width: 100%;
     max-width: 100px;
     height: 30px;
-    border-radius: 5px;
+    border-radius: 25px;
     border: 2px solid $mainTextColor;
     cursor: pointer;
     &.active,
