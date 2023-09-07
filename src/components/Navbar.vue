@@ -90,12 +90,14 @@ header {
   display: flex;
   align-items: center;
   .circle {
+    cursor: pointer;
     position: absolute;
     height: 30px;
     width: 30px;
     z-index: 997;
   }
   .hamburger {
+    cursor: pointer;
     z-index: 999;
     position: relative;
     width: 30px;
