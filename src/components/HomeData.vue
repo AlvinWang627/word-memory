@@ -135,11 +135,11 @@ const filteredWords = computed(() => {
     max-width: 100%;
     font-size: 1.2rem;
     padding: 0.5rem;
-    border-top: 1px solid $borderColor;
+    border-top: 1px solid $gary;
   }
   tbody {
     &:nth-child(even) {
-      background-color: $secondaryTextColor;
+      background-color: $gary;
     }
   }
 }

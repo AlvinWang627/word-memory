@@ -89,7 +89,7 @@ function testButton(word, event) {
   .wordEn {
     width: 100%;
     padding: 10px 0;
-    background-color: $borderColor;
+    background-color: $gary;
     font-size: 1.5rem;
     #arrow {
       position: absolute;
@@ -124,7 +124,7 @@ function testButton(word, event) {
       height: 40px;
       font-size: 20px;
       cursor: pointer;
-      color: #ffffff;
+      color: $mainColor;
     }
     .btn:nth-child(1) {
       background-color: #dc3545;
@@ -168,7 +168,7 @@ function testButton(word, event) {
       }
     }
   }
-  .hint{
+  .hint {
     .homeBtn {
       width: 20%;
     }

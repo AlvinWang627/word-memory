@@ -60,7 +60,7 @@ const navbarToggle = ref(false);
 <style lang="scss" scoped>
 header {
   position: fixed;
-  background-color: $navBgColor;
+  background-color: $lightGary;
   width: 100%;
   z-index: 998;
   text-align: center;
@@ -125,13 +125,13 @@ header {
   transform: scale(1, 0);
   transform-origin: top;
   transition: transform 0.3s ease-out;
-  background-color: $navBgColor;
+  background-color: $lightGary;
   .button {
     text-align: center;
     font-size: 1.2rem;
     line-height: 50px;
     color: $mainColor;
-    border-bottom: 1px solid $borderColor;
+    border-bottom: 1px solid $gary;
     opacity: 0;
     &:hover,
     &.active {
@@ -142,7 +142,7 @@ header {
   .space {
     width: 100%;
     height: 100vh;
-    background-color: $navBgColor;
+    background-color: $lightGary;
     opacity: 0;
   }
 }

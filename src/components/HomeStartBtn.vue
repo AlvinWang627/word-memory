@@ -66,7 +66,7 @@
 .footer {
   line-height: 30px;
   text-align: center;
-  background-color: $navBgColor;
+  background-color: $lightGary;
 }
 @media screen and (min-width: 768px) {
   .card {

@@ -245,7 +245,7 @@ function cancelEdit(wordId) {
       }
       margin-bottom: 5px;
       &:nth-child(even) {
-        background-color: $secondaryTextColor;
+        background-color: $gary;
       }
       .edit-input {
         padding-right: 12px;
